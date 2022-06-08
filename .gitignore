@@ -1,0 +1,7 @@
+bin
+obj
+.vs
+.DS_Store
+properties
+*.csproj.user
+LICENSE.txt
