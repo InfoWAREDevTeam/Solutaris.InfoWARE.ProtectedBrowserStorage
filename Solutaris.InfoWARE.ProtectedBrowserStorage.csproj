@@ -1,33 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net6.0;net8.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Company>Solutaris LLC</Company>
+		<Owners>Solutaris LLC</Owners>
 		<Authors>Abdulazeez Tobi Bolarinwa, InfoWARE Limited Dev Team</Authors>
 		<Copyright>All right reserved by Solutaris LLC</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<AssemblyVersion>1.1.1</AssemblyVersion>
-		<FileVersion>1.1.1</FileVersion>
+		<AssemblyVersion>1.0.2</AssemblyVersion>
+		<FileVersion>1.0.2</FileVersion>
 		<Version>1.0.2</Version>
-		<Description>Solutaris.InfoWARE.ProtectedBrowserStorage is a library that allows saving to browser's local storage and Session Storage in encrypted format for both Blazor WASM and Blazor Server.
+		<Description>Solutaris.InfoWARE.ProtectedBrowserStorage is a library that allows saving to browser's local storage and Session Storage in encrypted format for both Blazor WASM and Blazor Server Applications.
 
 Yes! Protected Browser Storage now possible with Solutaris.InfoWARE.ProtectedBrowserStorage (it encrypts the data using AES encryption and then compresses it before saving to browser's local or session Storage).
 
 With Solutaris.InfoWARE.ProtectedBrowserStorage you have a protected browser storage in Blazor WASM - which is not possible with Microsoft's Protected Browser Storage (Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage namespace) as it relies on ASP .NET Core Data Protection (only supported for Blazor Server apps)!</Description>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<PackageTags>IWProtectedBrowserStorage,  Protected Browser Storage For Blazor WASM and Blazor Server</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageTags>Solutaris.InfoWARE.ProtectedBrowserStorage, ProtectedBrowserStorage,  Protected Browser Storage For Blazor WASM and Blazor Server</PackageTags>
 		<RepositoryUrl>https://github.com/InfoWAREDevTeam/Solutaris.InfoWARE.ProtectedBrowserStorage.git</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/InfoWAREDevTeam/IWProtectedBrowserStorage</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/InfoWAREDevTeam/Solutaris.InfoWARE.ProtectedBrowserStorage</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageId>Solutaris.InfoWARE.ProtectedBrowserStorage</PackageId>
 		<Product>Solutaris.InfoWARE.ProtectedBrowserStorage</Product>
+		<PackageReleaseNotes>Added .Net 8.0 Support</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+		<None Include="README.md" Pack="true" PackagePath="README.md" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -35,18 +38,12 @@ With Solutaris.InfoWARE.ProtectedBrowserStorage you have a protected browser sto
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Condition="'$(TargetFramework)' == 'net6.0'" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Condition="'$(TargetFramework)' == 'net8.0'" Version="8.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="wwwroot\" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="README.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
 	</ItemGroup>
 
 </Project>
